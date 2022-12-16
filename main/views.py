@@ -14,8 +14,6 @@ from django.contrib.auth.decorators import login_required
 
 from .recommendations import *
 
-
-
 #Funcion de acceso restringido que carga los datos en la BD  
 @login_required(login_url='/ingresar')
 def populateDatabase(request):
@@ -96,7 +94,7 @@ def ingresar(request):
 
 @login_required(login_url='/ingresar')
 def cargarSR(request):
-    with shelve.open('matriz.dat') as db:
+    with shelve.open('matriz') as db:
         prefs = {}
         for punt in Puntuacion.objects.all():
             itemId = punt.idPelicula.idPelicula
