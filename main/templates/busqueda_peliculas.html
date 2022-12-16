@@ -1,0 +1,49 @@
+{% extends 'master.html' %}
+
+{% block contenido %} 
+<div class="container mb-5">
+	<div class="row">
+		<h2 class="bg-warning rounded-pill text-center">B&uacute;squeda de pel&iacute;culas por fecha</h2>
+		<div class="col-12">
+			<form id="formulario" method="post" action='' class="form mb-3">{% csrf_token %}
+				<div class="row">
+					<div class="col-9">
+						<label>{{ formulario.year.label }}</label>
+						{{ formulario.year }}
+						<span class="text-danger">{{ formulario.year.errors }}</span>
+					</div>
+					<div class="col-3 d-flex align-items-end">
+						<button type='submit' class="btn btn-secondary mx-auto">Realizar B&uacute;squeda</button>
+					</div>
+				</div>
+	
+			</form>
+			
+			<hr>
+	
+			{% if peliculas %}
+				<h3>Total de pel&iacute;culas del a&ntilde;o {{anyo}}:  {{ peliculas|length }}</h3>
+				<div class="container">
+					{% for row in peliculas %}
+					<div class="row rounded border border-dark mb-3 py-2">
+						<h5><strong>{{row.titulo}}</strong></h5>
+						<span>{{row.fechaEstreno}} | <a target="_blank" href="{{row.imdbUrl}}" class="link-primary">{{row.imdbUrl}}</a></span>
+						<span>Categor&iacute;as:</span>
+						<div class="col-12 mx-auto">
+							<ul>
+								{% for cat in row.categorias.all %}
+								<li>{{ cat.nombre }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					{%endfor%}
+				</div>
+	
+			{% endif %}
+		</div>
+	</div>
+</div>
+    	
+
+{% endblock %}

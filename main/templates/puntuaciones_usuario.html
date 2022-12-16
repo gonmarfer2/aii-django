@@ -1,0 +1,42 @@
+{% extends 'master.html' %}
+
+{% block contenido %} 
+<div class="container">
+	<h2 class="bg-warning rounded-pill text-center">B&uacute;squeda de puntuaciones de usuario</h2>
+	<form id="formulario" method="post" action='' class="form">{% csrf_token %}
+		<div class="row">
+			<div class="col-9">
+				<label>{{ formulario.idUsuario.label }}</label>
+				{{ formulario.idUsuario }}
+				<span class="text-danger">{{ formulario.idUsuario.errors }}</span>
+			</div>	
+			<div class="col-3 d-flex align-items-baseline pt-4">
+				<button type='submit' class="btn btn-secondary mx-auto">Realizar B&uacute;squeda</button>
+			</div>
+		</div>
+	</form>
+	<hr>
+	{% for error in errores %}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">{{ error }}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	{% endfor %}
+
+	{% if puntuaciones %}
+	<h3> Pel&iacute;culas puntuadas por el usuario {{idusuario}}:  {{ puntuaciones|length }}</h3>
+	<div class="row">
+	{% for row in puntuaciones %}
+	<div class="col-4 p-2">
+		<div class="border border-dark rounded-3 p-2">
+			<div class="row">
+				<div class="col-12"><strong>{{row.idPelicula.titulo}}</strong></div>
+				<div class="col-12">Puntuaci&oacute;n: {{row.puntuacion}}/5</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	</div>
+	{% endif %}
+</div>
+
+{% endblock %}

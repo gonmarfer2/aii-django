@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+
+{% block titulo %}  {% endblock %}
+
+
+{% block contenido %}
+<div class="container">
+    <h2 class="bg-warning rounded-pill text-center">Lista de las 50 Mejores Pel&iacute;culas con m&aacute;s de 100 Puntuaciones</h2>
+    <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/{{pagina|add:"-1"}}">Anterior</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/1">1</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/3">3</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/4">4</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/5">5</a></li>
+        <li class="page-item"><a class="page-link" href="/mejores_peliculas/{{pagina|add:"1"}}">Siguiente</a></li>
+    </ul>
+    
+    {% for row in peliculas %}
+    <div class="row rounded border border-dark mb-3 py-2">
+        <h5><strong>{{row.titulo}}</strong></h5>
+        <div class="col-12">Punutaci&oacute;n media: {{row.avg_rating | floatformat:"2"}}/5</div>
+        <div class="col-12">N&uacute;mero puntuaciones: {{row.num_rating}}</div>
+    </div>
+    {% endfor %}
+</div>
+    
+{% endblock %}

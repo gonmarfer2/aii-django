@@ -1,0 +1,46 @@
+{% extends 'master.html' %}
+
+{% block contenido %}
+<div class="container mb-5">
+    <h2 class="bg-warning rounded-pill text-center">Recomendar 2 pel&iacute;culas</h2>
+    {% if errors %}
+    <div class="row">
+        {% for error in errors %}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">{{error}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <form action="/recomendar/" method="POST" class="form">{% csrf_token %}
+            <div class="row">
+			<div class="col-9">
+				<label>{{ form.idUsuario.label }}</label>
+				{{ form.idUsuario }}
+				<span class="text-danger">{{ form.idUsuario.errors }}</span>
+			</div>	
+			<div class="col-3 d-flex align-items-baseline pt-4">
+				<button type='submit' class="btn btn-secondary mx-auto">Recomendar</button>
+			</div>
+		</div>
+        </form>
+    </div>
+    <hr>
+    {% if peliculas %}
+    <h4>Usuario {{usuario}}</h4>
+    <div class="row">
+        {% for pelicula in peliculas %}
+        <div class="col-6 p-2">
+            <div class="border border-dark rounded-3 p-2">
+                <div><strong>{{ pelicula.0.titulo }}</strong></div>
+                <div>Puntuación:&nbsp;{{ pelicula.1 | floatformat:2 }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+
+{% block contenido %} 
+<div class="container">
+	<h2 class="px-2 bg-warning rounded-pill text-center">Id&eacute;ntifiquese para continuar</h2>
+	<form id="formulario" method="post" action='' class="form">{% csrf_token %}
+		<div class="row mb-3">
+			{% for field in formulario %}
+			<div class="col-6">
+				<label>{{ field.label }}</label>
+				<div>{{ field }}</div>
+			</div>
+			{% endfor %}
+		</div>
+		<button type="submit" class="btn btn-secondary">Poblar BD</button>
+	</form>
+</div>
+{% endblock %}
