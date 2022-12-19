@@ -2,7 +2,7 @@
 
 {% block contenido %}
 <div class="container mb-5">
-    <h2 class="bg-warning rounded-pill text-center">Recomendar 2 pel&iacute;culas</h2>
+    <h2 class="bg-warning rounded-pill text-center">Recomendar 3 animes</h2>
     {% if errors %}
     <div class="row">
         {% for error in errors %}
@@ -28,14 +28,14 @@
         </form>
     </div>
     <hr>
-    {% if peliculas %}
+    {% if animes %}
     <h4>Usuario {{usuario}}</h4>
     <div class="row">
-        {% for pelicula in peliculas %}
-        <div class="col-6 p-2">
+        {% for anime in animes %}
+        <div class="col-4 p-2">
             <div class="border border-dark rounded-3 p-2">
-                <div><strong>{{ pelicula.0.titulo }}</strong></div>
-                <div>Puntuación:&nbsp;{{ pelicula.1 | floatformat:2 }}</div>
+                <div><strong>{{ anime.0.titulo }}</strong></div>
+                <div>Puntuación:&nbsp;{{ anime.1 | floatformat:2 }}</div>
             </div>
         </div>
         {% endfor %}

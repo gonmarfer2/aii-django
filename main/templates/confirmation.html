@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+
+{% block contenido %}
+<div class="container">
+    <h2 class="bg-warning rounded-pill text-center">¿Desea recargar la base de datos?</h2>
+    
+    <div class="row">
+        <div class="col-6">
+            <form action="/populate/" method="POST" class="d-grid">{% csrf_token %}
+                <button type="submit" class="btn btn-success">Aceptar</button>
+            </form>
+        </div>
+        <div class="col-6 d-grid">
+            <a href="/" class="btn btn-secondary">Volver al inicio</a>
+        </div>
+    </div>    
+
+</div>
+    
+{% endblock %}

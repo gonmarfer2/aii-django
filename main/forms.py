@@ -27,3 +27,6 @@ class CustomAuthenticationForm(AuthenticationForm):
             "class": "form-control"
             }),
     )
+
+class GeneroForm(forms.Form):
+    genero = forms.CharField(label="genero")

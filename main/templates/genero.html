@@ -1,0 +1,53 @@
+{% extends 'master.html' %}
+
+{% block contenido %}
+<div class="container mb-5">
+    <h2 class="bg-warning rounded-pill text-center">Buscar por genero</h2>
+    {% if errors %}
+    <div class="row">
+        {% for error in errors %}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">{{error}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	    {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="row">
+        <form action="/genero/" method="POST" class="form">{% csrf_token %}
+            <div class="row">
+			<div class="col-9">
+				<label id="genero" name="genero">Género: </label>
+                <select class="form-select" id="genero" name="genero" aria-label="Default select example">
+                    {% for genero in generos %}
+                        <option value="{{ genero }}">{{ genero }}</option>
+                    {% endfor %}
+                  </select>
+				<span class="text-danger">{{ form.genero.errors }}</span>
+			</div>	
+			<div class="col-3 d-flex align-items-baseline pt-4">
+				<button type='submit' class="btn btn-secondary mx-auto">Buscar</button>
+			</div>
+		</div>
+        </form>
+    </div>
+    <hr>
+    {% if animes %}
+    <h4>Animes:</h4>
+    <div class="row">
+        {% for anime in animes %}
+        <div class="col-6 p-2">
+            <div class="border border-dark rounded-3 p-2">
+                <div><strong>{{ anime.titulo }}</strong></div>
+                <div>Formato de emisión:&nbsp;{{ anime.formatoEmision }}</div>
+                <div>Número de episodios:&nbsp;{{ anime.numEpisodios }}</div>
+                <div>Géneros:&nbsp; {{ anime.genero }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

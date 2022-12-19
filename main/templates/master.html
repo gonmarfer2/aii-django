@@ -22,49 +22,31 @@
                             Inicio
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/populate">Poblar Base de Datos - Acceso Restringido</a></li>
-                            <li><a class="dropdown-item" href="/cargarsr">Cargar el sistema de recomendación</a></li>
-                            <li><a class="dropdown-item" href="/index.html">Sobre</a></li>
+                            <li><a class="dropdown-item" href="/populate">CARGAR LA BASE DE DATOS</a></li>
+                            <li><a class="dropdown-item" href="/cargarsr">CARGAR RECSYS</a></li>
+                            <li><a class="dropdown-item" href="/">Sobre</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Listados
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/ocupaciones_usuarios">Lista de Usuarios</a></li>
-                            <li><a class="dropdown-item" href="/mejores_peliculas/1">Mejores Pel&iacute;culas</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/genero">Animes por g&eacute;nero</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mejoresanimes">Mejores animes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recomendar">Recomendar animes</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            B&uacute;squedas
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/busqueda_peliculas">Buscar Pel&iacute;culas</a></li>
-                            <li><a class="dropdown-item" href="/puntuaciones_usuario">Buscar Usuario</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Recomendaciones
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/recomendar">Recomendar pel&iacute;culas a usuario</a></li>
-                            <li><a class="dropdown-item" href="/recomendarD">Recomendar pel&iacute;culas no puntuadas</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 	
-    <h1 class="my-3">EJERCICIO DE DJANGO - MOVIELENS 100K</h1>
+    <h1 class="my-3">PRACTICA SISTEMAS DE RECOMENDACION - ANIMES</h1>
     <hr>
  		
 	{% block contenido %} {% endblock %}
+    
   </body>
 </html>
